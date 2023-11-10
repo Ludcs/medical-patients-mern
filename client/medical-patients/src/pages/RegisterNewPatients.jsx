@@ -57,7 +57,8 @@ export const RegisterNewPatients = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:4000/patients/registerPatient',
+        //'http://localhost:4000/patients/registerPatient',
+        'https://medical-patients-backend.onrender.com/patients/registerPatient',
         form,
         {
           headers: {
@@ -93,7 +94,8 @@ export const RegisterNewPatients = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:4000/patients/update/${professionalID}/${patientID}`,
+        //`http://localhost:4000/patients/update/${professionalID}/${patientID}`,
+        `https://medical-patients-backend.onrender.com/patients/update/${professionalID}/${patientID}`,
         newPatient
       );
       setLoadingRegisterPatient(false);

@@ -39,7 +39,8 @@ export const Home = () => {
   const getPatientsForThisProfessional = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/patients/homePatients?professionalID=${professionalID}`
+        //`http://localhost:4000/patients/homePatients?professionalID=${professionalID}`
+        `https://medical-patients-backend.onrender.com/patients/homePatients?professionalID=${professionalID}`
       );
       setPatients(res.data);
     } catch (error) {
@@ -50,7 +51,8 @@ export const Home = () => {
   const getUrgentsPatientsIDs = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/patients/urgentPatientsIDs?professionalID=${professionalID}`
+        //`http://localhost:4000/patients/urgentPatientsIDs?professionalID=${professionalID}`
+        `https://medical-patients-backend.onrender.com/patients/urgentPatientsIDs?professionalID=${professionalID}`
       );
       setUrgentPatientsIDs(res.data.urgentPatients);
     } catch (error) {
@@ -67,7 +69,8 @@ export const Home = () => {
   const savedUrgentPatient = async (patientID) => {
     try {
       const res = await axios.put(
-        'http://localhost:4000/patients/urgentPatients',
+        //'http://localhost:4000/patients/urgentPatients',
+        'https://medical-patients-backend.onrender.com/patients/urgentPatients',
         {
           professionalID,
           patientID,
@@ -96,7 +99,8 @@ export const Home = () => {
     if (isDelete) {
       try {
         await axios.delete(
-          `http://localhost:4000/patients/deletePatient/${professionalID}/${patientID}`
+          //`http://localhost:4000/patients/deletePatient/${professionalID}/${patientID}`
+          `https://medical-patients-backend.onrender.com/patients/deletePatient/${professionalID}/${patientID}`
         );
         await getPatientsForThisProfessional();
         toast.success('Deleted patient', {

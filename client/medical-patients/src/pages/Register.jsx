@@ -39,7 +39,11 @@ export const Register = () => {
     setErrorMsgBack('');
     setErrorMsgValidator('');
     try {
-      await axios.post('http://localhost:4000/auth/register', registerValues);
+      await axios.post(
+        //'http://localhost:4000/auth/register',
+        'https://medical-patients-backend.onrender.com/auth/register',
+        registerValues
+      );
       setLoadingAuth(false);
       navigate('/');
     } catch (error) {

@@ -24,7 +24,8 @@ export const UrgentPatients = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://localhost:4000/patients/entireUrgentPatients?professionalID=${professionalID}`
+        //`http://localhost:4000/patients/entireUrgentPatients?professionalID=${professionalID}`
+        `https://medical-patients-backend.onrender.com/patients/entireUrgentPatients?professionalID=${professionalID}`
       );
       setUrgentsPatients(res.data.urgentPatients);
       setLoading(false);
@@ -61,7 +62,8 @@ export const UrgentPatients = () => {
     if (isDelete) {
       try {
         await axios.delete(
-          `http://localhost:4000/patients/deleteUrgentPatient/${professionalID}/${patientID}`
+          //`http://localhost:4000/patients/deleteUrgentPatient/${professionalID}/${patientID}`
+          `https://medical-patients-backend.onrender.com/patients/deleteUrgentPatient/${professionalID}/${patientID}`
         );
         await getEntireUrgentsPatients();
         toast.success('Paciente removido de Urgentes!', {

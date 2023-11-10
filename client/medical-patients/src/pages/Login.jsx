@@ -41,7 +41,8 @@ export const Login = () => {
     setErrorMsgValidator('');
     try {
       const res = await axios.post(
-        'http://localhost:4000/auth/login',
+        //'http://localhost:4000/auth/login',
+        'https://medical-patients-backend.onrender.com/auth/login',
         loginValues
       );
       setCookies('access_token', res.data.token);
