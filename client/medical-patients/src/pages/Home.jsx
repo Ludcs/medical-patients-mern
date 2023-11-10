@@ -3,12 +3,12 @@ import {useContext, useEffect} from 'react';
 import axios from 'axios';
 import {Topbar} from '../components/Topbar';
 import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {Loader} from '../components/Loader';
 import {Modal} from '../components/Modal';
 import {useCookies} from 'react-cookie';
 import {MyContext} from '../context/PatientContext';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Home = () => {
   const professionalID = window.localStorage.getItem('professionalID');
@@ -64,9 +64,6 @@ export const Home = () => {
     setLoading(false);
   }, []);
 
-  // console.log({patients});
-  // console.log({urgentPatientsIDs});
-
   const savedUrgentPatient = async (patientID) => {
     try {
       const res = await axios.put(
@@ -112,7 +109,7 @@ export const Home = () => {
   };
 
   const seeIndicatorsPatient = (el) => {
-    console.log(el);
+    //console.log(el);
     setIndicatorsPatient(el);
     setViewModal(true);
   };
@@ -131,7 +128,17 @@ export const Home = () => {
             <h1 className="w-3/4 m-auto my-5 px-4 font-PTSans font-bold text-3xl text-primary">
               All your patients
             </h1>
-            {/*!!!!!!!!!! {patients.length === 0 ? 'Aun no tienes pacientes' : null} */}
+            {patients.length === 0 ? (
+              <h1 className="w-3/4 m-auto my-5 px-4 font-PTSans text-xl text-primary">
+                You dont have any patients yet. Start by adding one{' '}
+                <Link
+                  to="/registerNewPatient"
+                  className="underline cursor-pointer"
+                >
+                  here
+                </Link>
+              </h1>
+            ) : null}
             <div className="p-4 grid grid-cols-3 gap-4 w-3/4 m-auto overflow-y-auto">
               {viewModal && (
                 <Modal

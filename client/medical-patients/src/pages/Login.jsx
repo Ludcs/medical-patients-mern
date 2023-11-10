@@ -91,6 +91,8 @@ export const Login = () => {
                 value={loginValues.email}
                 placeholder="Email"
                 onChange={handleChange}
+                autoComplete="off"
+                autoFocus={true}
               />
               <input
                 className="w-full rounded-lg h-11 bg-transparent border border-solid-white outline-none pl-3 font-PTSans text-secondary"
