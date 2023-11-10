@@ -20,7 +20,8 @@ export const RegisterNewPatients = () => {
   const getPatientById = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/patients/${professionalID}/${patientID}`
+        //`http://localhost:4000/patients/${professionalID}/${patientID}`
+        `https://medical-patients-backend.onrender.com/patients/${professionalID}/${patientID}`
       );
 
       setNewPatient(res.data);
